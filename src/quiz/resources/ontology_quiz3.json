@@ -1,0 +1,10 @@
+{
+    "ontology": {
+        "family": ["drama","musical","comedy"],
+        "drama": ["mean girls"],
+        "musical": ["la la land"],
+        "comedy": ["everything everywhere all at once"],
+        "horror": ["shining"]
+    }
+
+}
