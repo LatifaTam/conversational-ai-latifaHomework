@@ -86,7 +86,7 @@ transitions = {
                             '`Sorry, I didn\'t understand you.`': 'end'
                         },
                         '#UNX': {
-                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:( \n DO you you love action movies like` $MOVIE `though?`': 'genre'
+                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:( \n DO you love action movies like` $MOVIE `though?`': 'genre'
                         },
                     }
                 },
@@ -128,7 +128,7 @@ transitions = {
                             '`Sorry, I didn\'t understand you.`': 'end'
                         },
                         '#UNX': {
-                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:(\n DO you you love horror movies like` $MOVIE `though?`': 'genre'
+                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:(\n DO you love horror movies like` $MOVIE `though?`': 'genre'
                         },
                     }
                 },
@@ -170,7 +170,7 @@ transitions = {
                             '`Sorry, I didn\'t understand you.`': 'end'
                         },
                         '#UNX': {
-                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:(\n DO you you love science fiction movies like` $MOVIE `though?`': 'genre'
+                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:(\n DO you love science fiction movies like` $MOVIE `though?`': 'genre'
                         },
                     }
                 },
@@ -212,7 +212,7 @@ transitions = {
                             '`Sorry, I didn\'t understand you.`': 'end'
                         },
                         '#UNX': {
-                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:(\n DO you you love comedy movies like` $MOVIE `though?`': 'genre'
+                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:(\n DO you love comedy movies like` $MOVIE `though?`': 'genre'
                         },
                     }
                 },
@@ -254,7 +254,7 @@ transitions = {
                             '`Sorry, I didn\'t understand you.`': 'end'
                         },
                         '#UNX': {
-                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:(\n DO you you love animation movies like` $MOVIE `though?`': 'genre'
+                            '`DING!! Wrong answer. Seems like you are not a real fan for this movie nor the Oscars:(\n DO you love animation movies like` $MOVIE `though?`': 'genre'
                         },
                     }
                 },
