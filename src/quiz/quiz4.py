@@ -165,21 +165,22 @@ def mainConversation() -> DialogueFlow:
                             '[{already, saw, seen,watched}]':{
                                 '`Then` #RECOMANS': 'recomQuest'
                             },
-                            '[{why, [what, {special, interesting, cool}]}]': {
+                            '[{why, [what, {special, interesting, cool}], more information, [who, artist]}]': {
                                 '#SPECIAL': {
                                     '#UNX': {
                                         '`Hope you could enjoy this recommendation!`': 'end'
                                     },
                                     'error': {
+                                        'score': 0.00001,
                                         '`Sorry, I didn\'t understand you.`': 'end'
                                     }
                                 }
                             },
-                            '[{not yet, no, have not}]':{
+                            '[{not yet, no, have not, will watch, will listen, sure}]':{
                                 '`Hope you got time enjoy it soon!`':'end'
                             },
                             'error': {
-                                '`Sorry, I didn\'t understand you.`': 'end'
+                                '`Hope you enjoy my recommendation.`': 'end'
                             }
                         },
                         'error': {
@@ -193,8 +194,11 @@ def mainConversation() -> DialogueFlow:
                     '[{yes,already}]':{ # enjoy the previous recommendation and need new recommend
                         '`Woooo glad to know, then do you want some other recommendations in movies or songs?`':'recomReact'
                     },
+                    '[{stop}]':{
+                        '`Thank you for using this chatbot!`' : 'end'
+                    },
                     'error': {
-                        '`Sorry, I didn\'t understand you.Do you want some other recommendations in movies or songs?`':'recomReact'
+                        '`Sorry, I didn\'t understand you.Do you want some other recommendations in movies or songs?[you might exist with "stop"]`':'recomReact'
                     }
                 },
                 'error': {
