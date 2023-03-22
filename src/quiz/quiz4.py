@@ -91,7 +91,7 @@ class MacroRecomQues(Macro):
         if str(name) in vars.keys():
             # if the name had save before
             previous = vars[name][1]
-            if vars[name][0][0] != 0 and vars[name][0][1] != 0:
+            if vars[name][0][0] != 0 or vars[name][0][1] != 0:
                 return "Welcome back! Did you get to enjoy " + previous +"?"
             else:
                 return "Welcome back! Do you want some recommendations on movies or songs this time?"
