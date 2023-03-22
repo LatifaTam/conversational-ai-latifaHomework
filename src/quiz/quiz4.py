@@ -194,7 +194,7 @@ def mainConversation() -> DialogueFlow:
                         '`Woooo glad to know, then do you want some other recommendations in movies or songs?`':'recomReact'
                     },
                     'error': {
-                        '`Sorry, I didn\'t understand you.`': 'end'
+                        '`Sorry, I didn\'t understand you.Do you want some other recommendations in movies or songs?`':'recomReact'
                     }
                 },
                 'error': {
