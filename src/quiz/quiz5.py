@@ -17,7 +17,6 @@ __author__ = 'Latifa Tan'
 
 from emora_stdm import DialogueFlow, Macro, Ngrams
 from typing import Dict, Any, List
-
 import openai
 
 PATH_API_KEY = 'resources/openai_api.txt'
@@ -32,6 +31,7 @@ avTime=['Monday: 10 AM, 1 PM, 2 PM; Tuesday: 2 PM',# time[0]: haircut
       'Friday: 10 AM, 11 AM, 1 PM, 2 PM; Saturday: 10 AM, 2 PM']  # time[2]: perm
 timeChecker = 0 # 1: yes/ 0: no
 
+# use openAI to detect the service from the user's request
 class MacroService(Macro):
     def run(self, ngrams: Ngrams, vars: Dict[str, Any], args: List[str]):
         global serviceType
@@ -51,19 +51,19 @@ class MacroService(Macro):
             serviceType = 1
         elif 'perm' in output:
             serviceType = 2
-        else:
-            vars['SERVICEYES'] = '1'
+        else: # if the service is not in our list, check the checker to for "not offer"
+            vars['SERVICEYES'] = '7'
+            serviceType = 2 # ??why we need this tho . . . otherwise we will have error
         return True
 
+# return the available time slots for specific services according to the request
 class MacroTime(Macro):
     def run(self, ngrams: Ngrams, vars: Dict[str, Any], args: List[str]):
         # [haircut], [hair coloring], [perm], [other]
         global serviceType
-        if serviceType <=2:
-            return 'Sure, here is our open time slot for this service:\n' + avTime[serviceType]+'\nWhat date and time are you looking for?'
-        else:
-            return 'ohno'
+        return 'Sure, here is our open time slot for this service:\n' + avTime[serviceType]+'\nWhat date and time are you looking for?'
 
+# use openAI to check if the time user requested is available in our list
 class MacroCheckav(Macro):
     def run(self, ngrams: Ngrams, vars: Dict[str, Any], args: List[str]):
         global serviceType
@@ -81,6 +81,7 @@ class MacroCheckav(Macro):
             timeChecker =1
         return True
 
+# return response to user's request accordingly
 class MacroFinalcall(Macro):
     def run(self, ngrams: Ngrams, vars: Dict[str, Any], args: List[str]):
         global timeChecker
@@ -92,13 +93,15 @@ class MacroFinalcall(Macro):
 transitions = {
     'state': 'start',
     '`Hello, how can I help you?`': { # bot
-        '#SET($SERVICEYES=0) #SERVICE':{ # user response
-            '#IF($SERVICEYES=1)`Sorry we do not have this service`':{ #bot
+        '#SET($SERVICEYES=6) #SERVICE':{ # user response
+            '#IF($SERVICEYES=7)`Sorry we do not have this service`':{ #bot: if the service user requested is not offered
+                'score': 0.5,
                 '#UNX': {
                     '`Hope you enjoy using this bot!`': 'end'
                 }
             },
-            '#IF($SERVICEYES=0) #TIME':{ # bot
+            '#IF($SERVICEYES=6) #TIME':{ # bot: if the service requested is offered
+                'score': 0.01,
                 '#CHECKAV':{ # user response
                     '#FINALCALL':{ #bot
                         '#UNX': {
