@@ -1,2 +1,2 @@
 # conversational-ai
-repo for QTM329 Computational Linguistic 
+repo for CS329 Computational Linguistic 
